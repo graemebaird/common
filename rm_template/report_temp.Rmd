@@ -1,0 +1,78 @@
+---
+title: "Test Report"
+author: "Graeme Baird"
+date: "January 14, 2018"
+output:
+  word_document: 
+    reference_docx: report_template.docx
+    toc: true
+bibliography: syllabus.bib
+nocite: | 
+  @gruber2008earth
+---
+
+This is a standby template for adjusting the automatic formatting of RMarkdown documents intended to produce scientific manuscripts. It will be iteratively updated as additional examples are observed for the manuscript pipeline. If there are additional elements to customize, update this document, use the existing template to generate `report_temp.docx`, replace the existing template with this file, and then customize using that style collection. 
+
+
+a good default opts_chunk setup:
+```{r setup, echo=TRUE}
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, dpi=300, fig.width = 7, fig.height= 5)
+```
+
+```{r}
+library(magrittr)
+library(pander)
+```
+
+
+# Header 1
+## Header 2
+### Header 3
+#### Header 4
+##### Header 5
+
+# Ordered list
+1. Item 1
+2. Item 2
+3. Item 3
+    + Item 3a
+    + Item 3b
+
+
+# Body text and in-line citation
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra nec justo vitae tempus. Curabitur sit amet diam vitae est hendrerit feugiat sed sit amet mi. Vestibulum lacinia lobortis diam ac cursus. Quisque commodo finibus lectus quis blandit. Cras suscipit mi eu sapien tristique, vel tristique nunc malesuada. Sed non luctus lacus. Praesent sed augue dapibus, tincidunt quam non, interdum quam. Morbi dapibus mi diam, in porta metus varius a. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut leo tellus, condimentum ut fermentum at, pharetra eget quam. Etiam efficitur, mauris sed lacinia euismod, lectus nulla molestie dui, at eleifend ex lacus non massa. Maecenas molestie leo et nibh varius, tincidunt pharetra turpis ultrices. Nulla pretium cursus ipsum, in sagittis metus iaculis non. Sed tristique, neque at tempus tincidunt, nisl eros ultricies sem, vitae suscipit libero diam vitae ipsum. [@forseth2010ecology; @forseth2010ecology]
+
+# Plot with figure
+
+```{r pressure, echo=FALSE, fig.cap="\\label{fig:figs}Plotting example"}
+plot(pressure)
+```
+
+# Some LaTeX Basics
+
+$$X^2_{i,j}$$
+
+$$\sqrt{b^2 - 4ac}$$
+
+$$\sum_{i=1}^{n} X^3_i$$
+
+# Line break here
+******
+
+
+# Tables
+
+```{r}
+runif(n=100, min = 1,max = 5) %>% round(2) %>% matrix(nrow=10,ncol=10) %>% as.data.frame() %>% pander()
+```
+
+
+# Original computing environment
+```{r}
+pander(sessionInfo(), locale = FALSE)
+```
+
+# Bibliography
+
+
